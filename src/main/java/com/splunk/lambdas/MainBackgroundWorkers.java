@@ -4,6 +4,10 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * This submits foo() and bar() lambdas as background workers to a
+ * thread pool.
+ */
 public class MainBackgroundWorkers {
 
     public static void main(String[] args) throws Exception {
