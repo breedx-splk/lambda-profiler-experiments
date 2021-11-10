@@ -3,12 +3,11 @@ package com.splunk.lambdas;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
-public class Main {
+public class MainBackgroundWorkers {
 
     public static void main(String[] args) throws Exception {
-        new Main().run();
+        new MainBackgroundWorkers().run();
     }
 
     private void run() throws Exception {
@@ -16,7 +15,7 @@ public class Main {
         while(true){
             System.out.print("Running 2 jobs...");
             CompletableFuture<?> fooFuture = CompletableFuture.runAsync(this::foo, exec);
-            CompletableFuture<?> barFutureFuture = CompletableFuture.runAsync(this::foo, exec);
+            CompletableFuture<?> barFutureFuture = CompletableFuture.runAsync(this::bar, exec);
             CompletableFuture.allOf(fooFuture, barFutureFuture).get();
             System.out.println("complete.");
         }
